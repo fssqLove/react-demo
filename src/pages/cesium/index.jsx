@@ -1,6 +1,9 @@
 import React from "react";
 import { enquireScreen } from 'enquire-js';
 import './less/index.css';
+import Viewer from "cesium/Source/Widgets/Viewer/Viewer";
+import "cesium/Source/Widgets/widgets.css";
+
 
 let isMobile;
 enquireScreen((b) => {
@@ -21,18 +24,15 @@ export default class Cesium extends React.Component {
         enquireScreen((b) => {
             this.setState({ isMobile: !!b });
         });
+
+        this.viewer = new Viewer(this.cesiumContainer);
     }
 
     render() {
 
         return (
-            <div
-                className="cesium"
-                ref={(d) => {
-                    this.dom = d;
-                }}
-            >
-                我是一个自定义组件
+            <div>
+                <div id="cesiumContainer" ref={ element => this.cesiumContainer = element }/>
             </div>
         );
     }

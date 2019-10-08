@@ -1,10 +1,7 @@
 import React, {Component} from 'react';
-import { BrowserRouter as Router,Route} from "react-router-dom";
+import { BrowserRouter as Router} from "react-router-dom";
 
 import Routes from './pages/router';
-
-import Home from './pages/Home';
-import Cesium from './pages/cesium';
 
 import {enquireScreen} from 'enquire-js';
 
@@ -45,8 +42,6 @@ class App extends Component {
                 <Router>
                     <div>
                         <Header dataSource={Nav00DataSource} isMobile={this.isMobile}/>
-                        {/*<Route exact path="/" component={Home} />*/}
-                        {/*<Route exact path="/Cesium" component={Cesium} />*/}
                         <Routes />
                         <Footer dataSource={Footer00DataSource} isMobile={this.isMobile}/>
                     </div>
