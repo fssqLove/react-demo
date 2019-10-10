@@ -43,7 +43,5 @@
       "last 1 safari version"
     ]
   },
-  "devDependencies": {
-    "copy-webpack-plugin": "^5.0.4"
-  }
+  "devDependencies": {}
 }
