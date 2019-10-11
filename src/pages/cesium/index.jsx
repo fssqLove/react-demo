@@ -1,8 +1,7 @@
 import React from "react";
 import { enquireScreen } from 'enquire-js';
 import './less/index.css';
-import Viewer from "cesium/Source/Widgets/Viewer/Viewer";
-import "cesium/Source/Widgets/widgets.css";
+import Cesium from "cesium/Cesium";
 
 
 let isMobile;
@@ -11,7 +10,7 @@ enquireScreen((b) => {
 });
 
 
-export default class Cesium extends React.Component {
+export default class CesiumComponent extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -25,7 +24,10 @@ export default class Cesium extends React.Component {
             this.setState({ isMobile: !!b });
         });
 
-        this.viewer = new Viewer(this.cesiumContainer);
+        Cesium.Ion.defaultAccessToken = 'eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJqdGkiOiIwOGQ1Mzc2OC00NzlhLTQxMGEtOGY3MS1kYmY4YjcxYTcyN2IiLCJpZCI6MTYzODQsInNjb3BlcyI6WyJhc3IiLCJnYyJdLCJpYXQiOjE1NzA0MjYzMTF9.YOj297Bn6bE83YD-cFZsDHL4v9bqb8DPJK6LEYmGyKg';
+        this.viewer = new Cesium.Viewer(this.cesiumContainer, {
+            terrainProvider: Cesium.createWorldTerrain()
+        });
     }
 
     render() {
